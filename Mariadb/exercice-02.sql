@@ -49,7 +49,10 @@ VALUES
 -- - tag : SASS (id inconnu)
 -- Note : c'est à vous de retrouver l'id du tag mais vous pouvez l'inscrire en dur dans la requête.
 
-
+INSERT INTO student_tag
+(student_id, tag_id)
+VALUES
+(1, 11)
 
 -- Exo 2.4
 -- Mettez à jour le tag `HTML` :
@@ -92,7 +95,8 @@ WHERE name = 'Bash';
 -- Supprimez un student :
 -- - student : Odette Thomas
 
-
+DELETE FROM `student` 
+WHERE firstname = 'Odette' AND lastname = 'Thomas';
 
 -- Exo 2.10
 -- Supprimez un project et toutes les relations avec ses dépendances, c-à-d les relations avec des student et les relations avec des tags :
