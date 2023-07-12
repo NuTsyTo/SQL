@@ -76,6 +76,8 @@ WHERE name = 'Bash';
 -- - student : Zacharie Evrard
 -- - tag : Terminal Bash
 
+DELETE FROM student_tag
+WHERE student_id = 100 AND tag_id = 10;
 
 
 -- Exo 2.7
@@ -83,13 +85,16 @@ WHERE name = 'Bash';
 -- - student : Arthur Lacombe
 -- - project : Dicta quia at qui
 
-
+UPDATE student
+SET project_id = NULL 
+WHERE id = 16
 
 -- Exo 2.8
 -- Supprimez toutes les relations entre un student et ses tags :
 -- - student : Odette Thomas
 
-
+DELETE FROM student_tag
+WHERE student_id = 99 
 
 -- Exo 2.9
 -- Supprimez un student :
@@ -105,3 +110,15 @@ WHERE firstname = 'Odette' AND lastname = 'Thomas';
 -- Note : vous devez supprimez les relations avec les dépendances mais pas les dépendances.
 -- Autrement dit ne supprimez aucun student ni aucun tag.
 
+-- 1ere étape supprimer le project et ses relations à des tags 
+DELETE FROM `project_tag`
+WHERE project_id = 16;
+
+-- 2eme étapes supprimer le project et ses relations avec les students 
+UPDATE student
+SET project_id = NULL 
+WHERE project_id = 16;
+
+-- 3eme étapes 
+DELETE FROM project
+WHERE id = 16
